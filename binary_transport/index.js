@@ -17,11 +17,10 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-	io.emmit('new user connected', messages);
+	io.emit('guest connected', messages);
 
 	socket.on('message sent', function(msg){
 		messages.push(msg);
-		io.emmit('message sent', msg);
+		io.emit('message sent', msg);
 	});
-
 });
